@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کدهای فرمت عددی فارسی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+<body>
+    <div class="container">
+        <header>
+            <h1>کدهای فرمت عددی فارسی</h1>
+            <p class="description">کدهای سفارشی برای نمایش اعداد فارسی در پاورپوینت و اکسل</p>
+        </header>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="25%">کد فرمت</th>
+                        <th width="15%">دسته‌بندی</th>
+                        <th width="30%">کاربرد</th>
+                        <th width="20%">مثال خروجی</th>
+                        <th width="10%">کپی</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="code">[$-3010000]General</div></td>
+                        <td><span class="category">اعداد عمومی</span></td>
+                        <td>نمایش خودکار اعداد</td>
+                        <td><span class="example">۱۲۳۴۵ یا 12345</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]#,##0</div></td>
+                        <td><span class="category">اعداد عمومی</span></td>
+                        <td>اعداد با جداکننده هزارگان</td>
+                        <td><span class="example">۱,۲۳۴,۵۶۷</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]#,##0.00</div></td>
+                        <td><span class="category">اعداد عمومی</span></td>
+                        <td>اعداد اعشاری با جداکننده</td>
+                        <td><span class="example">۱,۲۳۴.۵۶</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]0.00</div></td>
+                        <td><span class="category">اعداد اعشاری</span></td>
+                        <td>اعداد اعشاری ساده</td>
+                        <td><span class="example">۱۲۳۴.۵۶</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]0.000</div></td>
+                        <td><span class="category">اعداد اعشاری</span></td>
+                        <td>اعداد با سه رقم اعشار</td>
+                        <td><span class="example">۱۲۳۴.۵۶۷</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]0.0000</div></td>
+                        <td><span class="category">اعداد اعشاری</span></td>
+                        <td>اعداد با چهار رقم اعشار</td>
+                        <td><span class="example">۱۲۳۴.۵۶۷۸</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]0%</div></td>
+                        <td><span class="category">درصد</span></td>
+                        <td>درصد بدون اعشار</td>
+                        <td><span class="example">۹۸٪</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]0.00%</div></td>
+                        <td><span class="category">درصد</span></td>
+                        <td>درصد با دو رقم اعشار</td>
+                        <td><span class="example">۹۸.۵۰٪</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]0.000%</div></td>
+                        <td><span class="category">درصد</span></td>
+                        <td>درصد با سه رقم اعشار</td>
+                        <td><span class="example">۹۸.۵۰۰٪</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]#,##0 "ریال"</div></td>
+                        <td><span class="category">پول و ارز</span></td>
+                        <td>اعداد با واحد ریال</td>
+                        <td><span class="example">۱,۲۳۴,۵۶۷ ریال</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]"﷼" #,##0</div></td>
+                        <td><span class="category">پول و ارز</span></td>
+                        <td>اعداد با علامت ریال</td>
+                        <td><span class="example">﷼ ۱,۲۳۴,۵۶۷</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]#,##0 "تومان"</div></td>
+                        <td><span class="category">پول و ارز</span></td>
+                        <td>اعداد با واحد تومان</td>
+                        <td><span class="example">۱,۲۳۴,۵۶۷ تومان</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]yyyy/mm/dd</div></td>
+                        <td><span class="category">تاریخ</span></td>
+                        <td>تاریخ عددی</td>
+                        <td><span class="example">۱۴۰۳/۰۵/۱۵</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]d mmmm yyyy</div></td>
+                        <td><span class="category">تاریخ</span></td>
+                        <td>تاریخ با نام ماه</td>
+                        <td><span class="example">۱۵ مرداد ۱۴۰۳</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]hh:mm:ss</div></td>
+                        <td><span class="category">زمان</span></td>
+                        <td>زمان با ثانیه</td>
+                        <td><span class="example">۱۴:۳۰:۲۵</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                    <tr>
+                        <td><div class="code">[$-3010000]hh:mm</div></td>
+                        <td><span class="category">زمان</span></td>
+                        <td>زمان بدون ثانیه</td>
+                        <td><span class="example">۱۴:۳۰</span></td>
+                        <td><button class="copy-btn"><i class="far fa-copy"></i> کپی</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="notes">
+            <h2>نکات مهم:</h2>
+            <ul>
+                <li><strong>کد اصلی:</strong> 3010000 برای فارسی ایران استفاده می‌شود</li>
+                <li><strong>مکان استفاده:</strong> این کدها در بخش Custom Format در پاورپوینت و اکسل کاربرد دارند</li>
+                <li><strong>روش اعمال:</strong> 
+                    <ol>
+                        <li>انتخاب سلول یا محور نمودار</li>
+                        <li>رفتن به Format Cells/Format Axis</li>
+                        <li>انتخاب Custom</li>
+                        <li>وارد کردن کد در Type</li>
+                    </ol>
+                </li>
+              
+            </ul>
+        </div>
+        
+        <footer>
+            <p>این جدول به صورت ریسپانسیو طراحی شده و در تمام دستگاه‌ها به خوبی نمایش داده می‌شود</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            // بررسی پشتیبانی مرورگر
+            function isClipboardAPISupported() {
+                return navigator.clipboard && window.isSecureContext;
+            }
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const firstColumn = row.cells[0];
+                    const codeElement = firstColumn.querySelector('.code');
+                    const codeText = codeElement.textContent;
+                    
+                    copyToClipboard(codeText, this);
+                });
+            });
+            
+            function copyToClipboard(text, button) {
+                if (isClipboardAPISupported()) {
+                    // استفاده از Clipboard API مدرن
+                    navigator.clipboard.writeText(text).then(() => {
+                        showCopySuccess(button);
+                    }).catch(err => {
+                        console.error('خطای Clipboard API: ', err);
+                        useFallbackCopy(text, button);
+                    });
+                } else {
+                    // استفاده از روش fallback
+                    useFallbackCopy(text, button);
+                }
+            }
+            
+            function useFallbackCopy(text, button) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.cssText = 'position: fixed; left: -9999px; top: -9999px; opacity: 0;';
+                
+                document.body.appendChild(textArea);
+                textArea.select();
+                textArea.setSelectionRange(0, 99999); // برای موبایل
+                
+                try {
+                    const successful = document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    if (successful) {
+                        showCopySuccess(button);
+                    } else {
+                        showCopyError(button);
+                    }
+                } catch (err) {
+                    document.body.removeChild(textArea);
+                    showCopyError(button);
+                    console.error('خطای fallback copy: ', err);
+                }
+            }
+            
+            function showCopySuccess(button) {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> کپی شد!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            }
+            
+            function showCopyError(button) {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-times"></i> خطا!';
+                button.classList.add('error');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('error');
+                }, 2000);
+                
+                // نمایش متن برای کپی دستی
+                const row = button.closest('tr');
+                const codeElement = row.cells[0].querySelector('.code');
+                alert(`برای کپی دستی این متن را انتخاب کنید:\n\n${codeElement.textContent}`);
+            }
+        });
+    </script>
+</body>
+</html><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Page</title>
+<meta name="generator" content="WYSIWYG Web Builder 20 - https://www.wysiwygwebbuilder.com">
+<link href="Untitled1.css" rel="stylesheet">
+<link href="page1.css" rel="stylesheet">
+</head>
+<body>
+</body>
+</html>

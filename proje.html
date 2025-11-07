@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مرور پروژه‌ها</title>
+    
+</head>
+<body>
+
+<div id="app">
+    <!-- صفحه ورود -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="http://10.105.5.153/data/loc.gif" alt="لوگوی ورود">
+            </div>
+            <input type="password" id="passwordInput" class="login-input" placeholder="رمز عبور" onkeypress="handleKeyPress(event)" autofocus>
+            <button class="login-button" onclick="checkPassword()">ورود</button>
+        </div>
+    </div>
+
+    <!-- صفحه اصلی (در ابتدا مخفی است) -->
+    <div class="container" id="mainPage" style="display:none">
+        <div class="sidebar">
+            <div class="header-section">
+                <div class="logo">
+                    <img src="http://10.105.5.153/data/logo.gif" alt="لوگو">
+                </div>
+                <img src="http://10.105.5.153/data/home.png" class="home-icon" onclick="resetToDefault()" alt="خانه">
+            </div>
+
+            <div class="filter-section">
+                <div class="count-box" id="projectCount">تعداد پروژه‌ها: 0</div>
+                <select id="SelectOrganization">
+                    <option value="">همه واحدها</option>
+                </select>
+                <select id="SelectExpert">
+                    <option value="">همه کارشناسان</option>
+                </select>
+                <input id="Editbox1" type="text" placeholder="جستجو با نام یا کد..." />
+            </div>
+
+            <ul id="ListView1"></ul>
+        </div>
+        <div class="main">
+            <div id="pdfContainer">
+                <iframe src="" id="pdfViewer"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+    }
+
+    async function fetchProjects() {
+        try {
+            const response = await fetch('projects.html'); // فایل داده‌های جدید
+            const text = await response.text();
+            const scriptContent = text.match(/const projects = (\[.*?\])/s)[1];
+            return eval(scriptContent);
+        } catch (error) {
+            console.error('خطا در دریافت داده‌های پروژه:', error);
+            return [];
+        }
+    }
+
+    let projects = [];
+
+    function checkPassword() {
+        const password = document.getElementById("passwordInput").value;
+        if (password === "0919") {
+            document.getElementById("loginPage").style.display = "none";
+            document.getElementById("mainPage").style.display = "flex";
+            initializeApp();
+        } else {
+            alert("رمز عبور اشتباه است!");
+        }
+    }
+
+    async function initializeApp() {
+        projects = await fetchProjects();
+        populateCategories();
+        populateExperts();
+        renderList();
+    }
+
+    function populateCategories() {
+        const select = document.getElementById("SelectOrganization");
+        const categories = [...new Set(projects.filter(p => p.category).map(p => p.category))];
+        categories.forEach(cat => {
+            const option = document.createElement("option");
+            option.value = cat;
+            option.textContent = cat;
+            select.appendChild(option);
+        });
+    }
+
+    function populateExperts() {
+        const select = document.getElementById("SelectExpert");
+        const experts = [...new Set(projects.filter(p => p.expert).map(p => p.expert))];
+        experts.forEach(exp => {
+            const option = document.createElement("option");
+            option.value = exp;
+            option.textContent = exp;
+            select.appendChild(option);
+        });
+    }
+
+    function renderList(filterText = "", category = "", expert = "") {
+        const listView = document.getElementById("ListView1");
+        const countBox = document.getElementById("projectCount");
+        listView.innerHTML = "";
+        countBox.textContent = "تعداد پروژه‌ها: 0";
+
+        const filtered = projects.filter(p =>
+            (filterText === "" || p.name.includes(filterText) || p.code.includes(filterText)) &&
+            (category === "" || p.category === category) &&
+            (expert === "" || p.expert === expert)
+        );
+
+        countBox.textContent = `تعداد پروژه‌ها: ${filtered.length}`;
+
+        filtered.forEach(p => {
+            const li = document.createElement("li");
+            li.textContent = `${p.name} ${p.code}`;
+            li.onclick = () => {
+                document.querySelectorAll('#ListView1 li').forEach(li => li.classList.remove('selected'));
+                li.classList.add('selected');
+                showPDF(p.code);
+            };
+            li.oncontextmenu = (e) => {
+                e.preventDefault();
+                copyToClipboard(p.code);
+                alert(`کد پروژه ${p.code} کپی شد`);
+            };
+            listView.appendChild(li);
+        });
+    }
+
+    function showPDF(code) {
+        const pdfURL = `http://10.105.5.153/data/proje/${code}.pdf`;
+        document.getElementById("pdfViewer").src = pdfURL;
+    }
+
+    function copyToClipboard(text) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+    }
+
+    function resetToDefault() {
+        document.getElementById("SelectOrganization").value = "";
+        document.getElementById("SelectExpert").value = "";
+        document.getElementById("Editbox1").value = "";
+        renderList();
+        document.getElementById("pdfViewer").src = "";
+        document.querySelectorAll('#ListView1 li').forEach(li => li.classList.remove('selected'));
+    }
+
+    document.getElementById("Editbox1").addEventListener("input", () => {
+        const text = document.getElementById("Editbox1").value.trim();
+        const category = document.getElementById("SelectOrganization").value;
+        const expert = document.getElementById("SelectExpert").value;
+        renderList(text, category, expert);
+    });
+
+    document.getElementById("SelectOrganization").addEventListener("change", () => {
+        const text = document.getElementById("Editbox1").value.trim();
+        const category = document.getElementById("SelectOrganization").value;
+        const expert = document.getElementById("SelectExpert").value;
+        renderList(text, category, expert);
+    });
+
+    document.getElementById("SelectExpert").addEventListener("change", () => {
+        const text = document.getElementById("Editbox1").value.trim();
+        const category = document.getElementById("SelectOrganization").value;
+        const expert = document.getElementById("SelectExpert").value;
+        renderList(text, category, expert);
+    });
+</script>
+
+</body>
+</html><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>پروژه ها</title>
+<meta name="generator" content="WYSIWYG Web Builder 20 - https://www.wysiwygwebbuilder.com">
+<link href="omran.css" rel="stylesheet">
+<link href="proje.css" rel="stylesheet">
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Page</title>
+<meta name="generator" content="WYSIWYG Web Builder 20 - https://www.wysiwygwebbuilder.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="omran.css" rel="stylesheet">
+<link href="tel.css" rel="stylesheet">
+</head>
+<body>
+<div id="wb_LayoutGrid1">
+<div id="LayoutGrid1">
+<div class="row">
+<div class="col-1">
+<div id="wb_Image19" style="display:block;width:100%;height:auto;z-index:0;">
+<img src="images/0010titr.png" id="Image19" alt="" width="940" height="59">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="FlexContainer1">
+<div id="Html1" style="display:inline-block;width:883px;height:237px;z-index:1">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>دفتر تلفن</title>
+  </head>
+<body>
+
+<h1>دفتر تلفن</h1>
+
+<input type="text" id="search" placeholder="جستجو بر اساس نام، سمت یا شماره...">
+
+<table id="phonebook">
+  <thead>
+    <tr>
+      <th>نام</th>
+      <th>سمت</th>
+      <th>شماره تماس</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>سید عبدالمهدی حسینی</td>
+      <td>مدیرکل</td>
+      <td>96020132</td>
+    </tr>
+    <tr>
+      <td>محسن کلانتری</td>
+      <td>دفتر</td>
+      <td>96020130</td>
+    </tr>
+    <tr>
+      <td>محمدرضا صفری الموتی</td>
+      <td>حراست</td>
+      <td>96020081</td>
+    </tr>
+    <tr>
+      <td>شاهين فردحاجيان</td>
+      <td>بازرسی</td>
+      <td>96066096</td>
+    </tr>
+    <tr>
+      <td>مینا شهامت نژاد</td>
+      <td>معاون برنامه‌ریزی</td>
+      <td>96020134</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  const input = document.getElementById('search');
+  const table = document.getElementById('phonebook').getElementsByTagName('tbody')[0];
+
+  input.addEventListener('input', function () {
+    const filter = input.value.trim();
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+      const rowText = rows[i].innerText;
+      rows[i].style.display = rowText.includes(filter) ? '' : 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
+</div>
+</div>
+</body>
+</html>
